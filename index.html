@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,8 +10,12 @@
 
 <body>
     <div class="vertretungsplan-wrapper">
-        <div class="heute"></div>
-        <div class="morgen"></div>
+        <div class="heute">
+            <iframe id="heute" src="generator/template.html"></iframe>
+        </div>
+        <div class="morgen">
+            <iframe id="morgen" src="generator/template.html"></iframe>
+        </div>
     </div>
 
     <div class="widgets-bus-wrapper"></div>
@@ -21,6 +26,8 @@
         <img src="logos/leibniz.png" style="width: calc(100% - 16px)">
         <img src="logos/verein.png" style="width: 100%;">
     </div>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
