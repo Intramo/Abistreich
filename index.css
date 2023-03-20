@@ -1,5 +1,6 @@
 body, html{
     width: 100%;
+    height: 100%;
 }
 
 * {
@@ -9,11 +10,20 @@ body, html{
 }
 
 body{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+
     background-color: white;
 }
 
 .vertretungsplan-wrapper{
     width: 55%;
+    height: 100%;
+
+    overflow: hidden;
 
     display: flex;
     flex-direction: row;
@@ -33,26 +43,19 @@ body{
 
 .vertretungsplan-wrapper > div > iframe{
     width: 100%;
-
     border: none;
     outline: none;
+
+    overflow: hidden;
 }
 
 .widgets-bus{
-    position: fixed;
-    top: 0;
-    left: 50%;
-
     background-color: white;
     height: 100%;
     width: 30%;
 }
 
 .widgets-logo{
-    position: fixed;
-    top: 0;
-    right: 0px;
-
     height: 100%;
     width: 15%;
 

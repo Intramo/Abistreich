@@ -1,5 +1,5 @@
 const maxScrollTime = 1000 * 15;
-const scrollTimeout = 1000 * 5;
+const scrollTimeout = 1000 * 4;
 
 class vertretungsplan {
     constructor(name) {
@@ -15,23 +15,30 @@ function tick(plan, delay){
     // Scroll for 15 seconds, then wait 5 seconds and continue
     // And/Or wait 5 seconds when it reaches the end
     // Restart and wait 5 seconds
+    // Also add a 5 second delay on top of the page
 
     if(plan.scrollTimeOut > 0){
         plan.scrollTimeOut -= delay;
         return;
     }
 
+    if(plan.scrollTime <= 0){
+        plan.scrollTimeOut = scrollTimeout;
+        plan.scrollTime = maxScrollTime;
+        plan.element.style.transform = "translateY(0px)";
+        return;
+    }
+
     if(plan.scrollTime > 0){
         plan.scrollTime -= delay;
         plan.scrollPos += delay / 10;
-        plan.element.scroll(0, plan.scrollPos);
+        plan.element.style.transform = "translateY(-" + plan.scrollPos + "px)";
         return;
     }
 
     if(plan.scrollPos >= plan.height){
         plan.scrollTimeOut = scrollTimeout;
         plan.scrollPos = 0;
-        plan.element.style.scrollBehavior = "auto";
         return;
     }
 
