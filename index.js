@@ -25,14 +25,6 @@ function tick(plan, delay){
     if(plan.scrollTime <= 0){
         plan.scrollTimeOut = scrollTimeout;
         plan.scrollTime = maxScrollTime;
-        plan.element.style.transform = "translateY(0px)";
-        return;
-    }
-
-    if(plan.scrollTime > 0){
-        plan.scrollTime -= delay;
-        plan.scrollPos += delay / 10;
-        plan.element.style.transform = "translateY(-" + plan.scrollPos + "px)";
         return;
     }
 
@@ -42,7 +34,12 @@ function tick(plan, delay){
         return;
     }
 
-    plan.scrollTime = maxScrollTime;
+    if(plan.scrollTime > 0){
+        plan.scrollTime -= delay;
+        plan.scrollPos += delay / 10;
+        plan.element.style.transform = "translateY(-" + plan.scrollPos + "px)";
+        return;
+    }
 }
 
 const heute = new vertretungsplan("heute");
